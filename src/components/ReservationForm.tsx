@@ -34,14 +34,15 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
     setStatus('loading');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/restoredinmtl@gmail.com', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          _subject: 'New Event Reservation Inquiry – Vieux Casa',
+          access_key: process.env.VITE_WEB3FORMS_KEY,
+          subject: 'New Event Reservation Inquiry – Vieux Casa',
           'Full Name': formData.name,
           'Phone Number': formData.phone,
           'Email Address': formData.email,
@@ -51,14 +52,12 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
           'Event Type': formData.eventType,
           'Special Requests': formData.requests || '—',
           'Language': lang === 'fr' ? 'French' : 'English',
-          _captcha: 'false',
-          _template: 'table',
         }),
       });
 
       const result = await response.json();
 
-      if (result.success === 'true' || result.success === true) {
+      if (result.success) {
         setStatus('success');
         setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
       } else {
