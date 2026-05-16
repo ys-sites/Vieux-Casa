@@ -122,8 +122,8 @@ const GALLERY_IMAGES = [
   "1M8A9062.jpg", "1M8A9010.jpg", "1M8A9103.jpg", "1M8A9016.jpg",
   "1M8A9110.jpg", "1M8A9019.jpg", "1M8A9037.jpg", "1M8A9040.jpg",
   "1M8A9047.jpg", "1M8A9057.jpg", "1M8A9067.jpg", "1M8A9075.jpg",
-  "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9094.jpg", "1M8A9107.jpg",
-  "1M8A9112.jpg", "1M8A9115.jpg", "1M8A9029.jpg",
+  "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9094.jpg",
+  "1M8A9112.jpg", "1M8A9029.jpg",
 ].map(f => `/media/${encodeURIComponent(f)}`);
 
 function GallerySection({ lang }: { lang: "fr" | "en" }) {
