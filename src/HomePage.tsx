@@ -327,9 +327,14 @@ export default function HomePage() {
                       {lang === "fr" ? MENU_CATEGORIES[catIndex].title_fr : MENU_CATEGORIES[catIndex].title_en}
                     </h2>
                     {(lang === "fr" ? MENU_CATEGORIES[catIndex].desc_fr : MENU_CATEGORIES[catIndex].desc_en) && (
-                      <p className="text-mediterranean/70 italic font-serif text-center text-lg max-w-sm mx-auto mt-4">
-                        {lang === "fr" ? MENU_CATEGORIES[catIndex].desc_fr : MENU_CATEGORIES[catIndex].desc_en}
-                      </p>
+                      <BlurText
+                        text={lang === "fr" ? MENU_CATEGORIES[catIndex].desc_fr : MENU_CATEGORIES[catIndex].desc_en}
+                        delay={60}
+                        animateBy="words"
+                        direction="top"
+                        stepDuration={0.2}
+                        className="text-mediterranean/70 italic font-serif text-center text-lg max-w-sm mx-auto mt-4 justify-center"
+                      />
                     )}
                   </div>
                   <ul className="flex flex-col gap-8">
@@ -371,9 +376,14 @@ export default function HomePage() {
                       {lang === "fr" ? MENU_CATEGORIES[catIndex].title_fr : MENU_CATEGORIES[catIndex].title_en}
                     </h2>
                     {(lang === "fr" ? MENU_CATEGORIES[catIndex].desc_fr : MENU_CATEGORIES[catIndex].desc_en) && (
-                      <p className="text-mediterranean/70 italic font-serif text-center text-lg max-w-sm mx-auto mt-4">
-                        {lang === "fr" ? MENU_CATEGORIES[catIndex].desc_fr : MENU_CATEGORIES[catIndex].desc_en}
-                      </p>
+                      <BlurText
+                        text={lang === "fr" ? MENU_CATEGORIES[catIndex].desc_fr : MENU_CATEGORIES[catIndex].desc_en}
+                        delay={60}
+                        animateBy="words"
+                        direction="top"
+                        stepDuration={0.2}
+                        className="text-mediterranean/70 italic font-serif text-center text-lg max-w-sm mx-auto mt-4 justify-center"
+                      />
                     )}
                   </div>
                   <ul className="flex flex-col gap-8">
@@ -469,16 +479,16 @@ export default function HomePage() {
              href="https://www.google.com/maps/search/Vieux+Casa+108+Rue+St-Paul+Joliette+QC"
              target="_blank"
              rel="noopener noreferrer"
-             className="inline-flex items-center gap-5 bg-mediterranean border border-gold/20 rounded-2xl p-5 md:p-6 hover:border-gold/50 transition-all group shadow-lg max-w-xl w-full text-left"
+             className="inline-flex items-center gap-5 bg-sand border border-gold/40 rounded-2xl p-5 md:p-6 hover:border-gold transition-all group shadow-md max-w-xl w-full text-left"
            >
-             <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
+             <div className="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0 group-hover:bg-gold/25 transition-colors">
                <Star size={20} className="fill-gold text-gold" />
              </div>
              <div className="flex-1">
-               <p className="font-serif text-sand font-semibold text-base leading-snug">
+               <p className="font-serif text-mediterranean font-semibold text-base leading-snug">
                  {lang === "fr" ? "Vous avez apprécié votre expérience ? Laissez-nous un avis Google 5 étoiles !" : "Enjoyed your experience? Leave us a 5-star Google review!"}
                </p>
-               <p className="text-sand/50 text-sm mt-0.5 font-sans">
+               <p className="text-mediterranean/50 text-sm mt-0.5 font-sans">
                  {lang === "fr" ? "Aidez d'autres convives à nous découvrir." : "It helps more guests discover us."}
                </p>
              </div>
