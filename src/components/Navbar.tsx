@@ -60,16 +60,22 @@ export default function Navbar({
             {lang === "fr" ? "Notre Histoire" : "Our Story"}
           </button>
           <button
-            onClick={() => scrollTo("values")}
+            onClick={() => scrollTo("gallery")}
             className="transition-colors hover-underline-animation hover:text-gold"
           >
-            {lang === "fr" ? "Valeurs" : "Values"}
+            {lang === "fr" ? "Galerie" : "Gallery"}
           </button>
           <button
             onClick={() => scrollTo("testimonials")}
             className="transition-colors hover-underline-animation hover:text-gold"
           >
-            {lang === "fr" ? "Avis" : "Testimonials"}
+            {lang === "fr" ? "Avis" : "Reviews"}
+          </button>
+          <button
+            onClick={() => scrollTo("reservation")}
+            className="transition-colors hover-underline-animation hover:text-gold"
+          >
+            {lang === "fr" ? "Réservation" : "Reservation"}
           </button>
         </div>
 
@@ -125,8 +131,9 @@ export default function Navbar({
             {[
               { id: "menu", en: "Menu", fr: "Menu" },
               { id: "about", en: "Our Story", fr: "Notre Histoire" },
-              { id: "values", en: "Values", fr: "Valeurs" },
-              { id: "testimonials", en: "Testimonials", fr: "Avis" },
+              { id: "gallery", en: "Gallery", fr: "Galerie" },
+              { id: "testimonials", en: "Reviews", fr: "Avis" },
+              { id: "reservation", en: "Reservation", fr: "Réservation" },
             ].map((item) => (
               <button
                 key={item.id}

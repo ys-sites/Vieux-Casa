@@ -431,10 +431,10 @@ export default function HomePage() {
       </section>
 
       {/* Exquisite Atmosphere Gallery */}
-      <GallerySection lang={lang} />
+      <div id="gallery"><GallerySection lang={lang} /></div>
 
       {/* Testimonials Marquee */}
-      <section className="w-full py-24 md:py-32 bg-sand-dark text-mediterranean overflow-hidden">
+      <section id="testimonials" className="w-full py-24 md:py-32 bg-sand-dark text-mediterranean overflow-hidden">
          <div className="max-w-6xl mx-auto px-6 md:px-16 mb-16 text-center">
            <p className="text-gold font-bold tracking-[0.25em] text-sm uppercase mb-4">
              {lang === "fr" ? "Témoignages" : "Testimonials"}
@@ -570,13 +570,13 @@ export default function HomePage() {
              </p>
            </div>
 
-           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-16">
-              
+           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+
               <div className="flex flex-col gap-6">
                  <h6 className="font-serif text-2xl text-sand">Links</h6>
                  <div className="flex flex-col gap-4">
                    <a href="#about" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "À Propos" : "About"}</a>
-                   <a href="#menu" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "Services" : "Services"}</a>
+                   <a href="#gallery" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "Galerie" : "Gallery"}</a>
                    <a href="#reservation" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "Réservation" : "Reservation"}</a>
                  </div>
               </div>
@@ -590,24 +590,27 @@ export default function HomePage() {
                  </div>
               </div>
 
-              <div className="flex flex-col gap-6 sm:col-span-2 md:col-span-1">
+              <div className="flex flex-col gap-6">
                  <h6 className="font-serif text-2xl text-sand">Location</h6>
-                 <div className="flex flex-col gap-4 text-sand/60 text-sm">
-                   <p className="mb-2 text-sand leading-relaxed">
-                     <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
-                       108 Rue St-Paul <br/> Joliette, QC J6E 5G3
-                     </a>
-                   </p>
-                   <a href="tel:+14503943333" className="font-sans text-sand/60 hover:text-gold transition-colors block mb-6">
+                 <div className="flex flex-col gap-3 text-sand/60 text-sm">
+                   <a href="https://maps.google.com/?q=108+Rue+St-Paul+Joliette,+QC+J6E+5G3" target="_blank" rel="noopener noreferrer" className="text-sand leading-relaxed hover:text-gold transition-colors">
+                     108 Rue St-Paul<br/>Joliette, QC J6E 5G3
+                   </a>
+                   <a href="tel:+14503943333" className="font-sans text-sand/60 hover:text-gold transition-colors">
                      +1 (450) 394-3333
                    </a>
-
-                   <h6 className="font-serif text-xl tracking-wide text-sand mt-4">Hours</h6>
-                   <p className="text-sand/50 mt-1">
-                     Tue - Sun ( 11:00 - 21:00 ) &nbsp;·&nbsp; Closed on Monday
-                   </p>
                  </div>
               </div>
+
+              <div className="flex flex-col gap-6">
+                 <h6 className="font-serif text-2xl text-sand">Hours</h6>
+                 <div className="flex flex-col gap-2 text-sm">
+                   <p className="text-sand/60">Tue – Sun</p>
+                   <p className="text-sand font-medium">11:00 – 21:00</p>
+                   <p className="text-sand/50 mt-1">{lang === "fr" ? "Fermé le lundi" : "Closed on Monday"}</p>
+                 </div>
+              </div>
+
            </div>
         </div>
 
