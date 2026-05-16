@@ -17,16 +17,23 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
     setStatus('loading');
 
     const form = e.currentTarget;
-    const data = new FormData(form);
+    const raw = new FormData(form);
+    const body: Record<string, string> = {};
+    raw.forEach((v, k) => { body[k] = v as string; });
 
     try {
       const res = await fetch('https://formsubmit.co/ajax/cloud@ysdev.ca', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(body),
       });
 
-      if (res.ok) {
+      const json = await res.json().catch(() => ({}));
+
+      if (res.ok && json.success !== 'false') {
         setStatus('success');
         form.reset();
       } else {
