@@ -34,15 +34,31 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formsubmit.co/ajax/restoredinmtl@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, lang }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `New Reservation – ${formData.name} · ${formData.eventType}`,
+          _captcha: 'false',
+          _template: 'table',
+          'Full Name': formData.name,
+          'Phone Number': formData.phone,
+          'Email Address': formData.email,
+          'Date': formData.date,
+          'Time': formData.time,
+          'Number of Guests': formData.guests,
+          'Event Type': formData.eventType,
+          'Special Requests': formData.requests || '—',
+          'Language': lang === 'fr' ? 'French' : 'English',
+        }),
       });
 
       const result = await response.json();
 
-      if (result.success) {
+      if (result.success === 'true' || result.success === true) {
         setStatus('success');
         setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
       } else {
