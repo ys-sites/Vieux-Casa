@@ -25,7 +25,9 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Read(//c/c/Users/Sharafath/Desktop/Website/Vieux Casa/**)",
+      "Bash(awk ' *)"
     ]
   }
 }
