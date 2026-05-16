@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { MoveRight, Star, MapPin, Clock, Phone, ArrowUpRight, Instagram, Facebook, ArrowRight, ArrowLeft } from "lucide-react";
 import Navbar from "./components/Navbar";
 import ReservationForm from "./components/ReservationForm";
+import ShinyText from "./components/ui/ShinyText";
+import BlurText from "./components/ui/BlurText";
 
 // Menu Data Preserved
 const MENU_CATEGORIES = [
@@ -17,7 +19,7 @@ const MENU_CATEGORIES = [
       { id: "#10", name_fr: "Poulet et crevettes papillon", name_en: "Chicken and butterfly shrimp", price: "$20.99", desc_fr: "", desc_en: "" },
       { id: "#9", name_fr: "Assiette de crevettes papillon", name_en: "Butterfly shrimp plate", price: "$20.99", desc_fr: "", desc_en: "" }
     ],
-    image: "/media/1M8A9009.jpg",
+    image: "/media/1M8A9010.jpg",
     desc_en: "Here are the dishes and items most frequently ordered at this business.",
     desc_fr: "Voici les plats et les articles le plus souvent commandés à ce commerce."
   },
@@ -34,7 +36,7 @@ const MENU_CATEGORIES = [
       { id: "#12", name_fr: "Salade de crevettes", name_en: "Grilled shrimp salad", price: "$17.99", desc_en: "", desc_fr: "" },
       { id: "#15", name_fr: "Assiette végétarienne", name_en: "Vegetarian plate", price: "$17.99", desc_en: "", desc_fr: "" },
     ],
-    image: "/media/1M8A9013.jpg",
+    image: "/media/1M8A9016.jpg",
     desc_en: "All our principal plates are served with 2 choices of salads, Basmati rice and Greek potatoes with a sauce of your choice.",
     desc_fr: "Toutes nos assiettes principales sont servies avec 2 choix de salades, riz basmati et pommes de terre grecques avec une sauce au choix."
   },
@@ -65,7 +67,7 @@ const MENU_CATEGORIES = [
       { id: "", name_fr: "Pepsi", name_en: "Pepsi", price: "$2.99", desc_en: "Classic, refreshing cola soda.", desc_fr: "Soda cola classique et rafraîchissant." },
       { id: "", name_fr: "7Up", name_en: "7Up", price: "$2.99", desc_en: "Crisp, refreshing lemon-lime carbonated drink for a rejuvenating burst of flavor.", desc_fr: "Boisson gazeuse citron-lime vive et rafraîchissante pour une explosion de saveur rajeunissante." },
     ],
-    image: "/media/1M8A9020.jpg",
+    image: "/media/1M8A9062.jpg",
     desc_en: "Refresh and sweeten the end of your magical Greek journey.",
     desc_fr: "Rafraîchissez et adoucissez la fin de votre voyage grec magique."
   },
@@ -75,7 +77,7 @@ const MENU_CATEGORIES = [
     items: [
       { id: "", name_fr: "Baklava grec", name_en: "Greek Baklava", price: "$4.99", desc_en: "Layers of flaky filo pastry, typically includes chopped nuts, sweetened with syrup.", desc_fr: "Couches de pâte filo feuilletée, comprenant généralement des noix hachées, sucrées avec du sirop." },
     ],
-    image: "/media/1M8A9024.jpg",
+    image: "/media/1M8A9067.jpg",
     desc_en: "Perfect sweet ending to your meal.",
     desc_fr: "Parfaite douceur pour terminer votre repas."
   }
@@ -117,15 +119,11 @@ const REVIEWS = [
 ];
 
 const GALLERY_IMAGES = [
-  "1M8A9058.jpg", "1M8A9062.jpg", "1M8A9063.jpg", "1M8A9071.jpg",
-  "1M8A9077.jpg", "1M8A9103.jpg", "1M8A9110.jpg", "1M8A9010.jpg",
-  "1M8A9013.jpg", "1M8A9015.jpg", "1M8A9016.jpg", "1M8A9019.jpg",
-  "1M8A9020.jpg", "1M8A9024.jpg", "1M8A9028.jpg", "1M8A9035.jpg",
-  "1M8A9037.jpg", "1M8A9040.jpg", "1M8A9041.jpg", "1M8A9047.jpg",
-  "1M8A9057.jpg", "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9088.jpg",
-  "1M8A9094.jpg", "1M8A9104.jpg", "1M8A9107.jpg", "1M8A9112.jpg",
-  "1M8A9115.jpg", "1M8A9029.jpg", "1M8A9075.jpg", "1M8A9017.jpg",
-  "1M8A9055.jpg", "1M8A9067.jpg", "1M8A9009.jpg", "1M8A9007.jpg",
+  "1M8A9062.jpg", "1M8A9010.jpg", "1M8A9103.jpg", "1M8A9016.jpg",
+  "1M8A9110.jpg", "1M8A9019.jpg", "1M8A9037.jpg", "1M8A9040.jpg",
+  "1M8A9047.jpg", "1M8A9057.jpg", "1M8A9067.jpg", "1M8A9075.jpg",
+  "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9094.jpg", "1M8A9107.jpg",
+  "1M8A9112.jpg", "1M8A9115.jpg", "1M8A9029.jpg",
 ].map(f => `/media/${encodeURIComponent(f)}`);
 
 function GallerySection({ lang }: { lang: "fr" | "en" }) {
@@ -137,14 +135,23 @@ function GallerySection({ lang }: { lang: "fr" | "en" }) {
           <p className="text-gold font-bold tracking-[0.25em] text-xs uppercase mb-4">
             {lang === "fr" ? "Notre Ambiance" : "Our Atmosphere"}
           </p>
-          <h2 className="font-serif text-5xl md:text-6xl text-mediterranean mb-6">
-            {lang === "fr" ? "L'Expérience Visuelle" : "The Visual Experience"}
+          <h2 className="font-serif text-5xl md:text-6xl mb-6">
+            <ShinyText
+              text={lang === "fr" ? "L'Expérience Visuelle" : "The Visual Experience"}
+              color="#112330"
+              shineColor="#b28e57"
+              speed={3}
+            />
           </h2>
-          <p className="max-w-xl text-mediterranean/70">
-            {lang === "fr" 
-              ? "Plongez dans l'élégance de nos salles et la créativité de nos plats." 
+          <BlurText
+            text={lang === "fr"
+              ? "Plongez dans l'élégance de nos salles et la créativité de nos plats."
               : "Immerse yourself in the elegance of our spaces and the creativity of our dishes."}
-          </p>
+            delay={70}
+            animateBy="words"
+            direction="bottom"
+            className="max-w-xl text-mediterranean/70 justify-center"
+          />
         </div>
         
         <div className="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-6 space-y-6">
@@ -271,13 +278,18 @@ export default function HomePage() {
       <section id="menu" className="w-full py-24 md:py-32 bg-sand text-mediterranean">
         <div className="max-w-[1440px] mx-auto px-6 md:px-16">
           <div className="text-center mb-16">
-            <motion.h1 
+            <motion.h1
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                className="font-serif text-5xl md:text-7xl mb-4"
             >
-              {lang === "fr" ? "Nos Menus" : "Menus"}
+              <ShinyText
+                text={lang === "fr" ? "Nos Menus" : "Menus"}
+                color="#112330"
+                shineColor="#b28e57"
+                speed={3}
+              />
             </motion.h1>
           </div>
           
@@ -390,7 +402,7 @@ export default function HomePage() {
       <section id="about" className="relative w-full py-24 md:py-32 bg-mediterranean text-sand overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img 
-            src="/media/1M8A9028.jpg" 
+            src="/media/1M8A9081.jpg"
             alt="Mediterranean"
             className="w-full h-full object-cover grayscale"
           />
@@ -427,8 +439,13 @@ export default function HomePage() {
            <p className="text-gold font-bold tracking-[0.25em] text-sm uppercase mb-4">
              {lang === "fr" ? "Témoignages" : "Testimonials"}
            </p>
-           <h2 className="font-serif text-4xl md:text-6xl text-mediterranean">
-             {lang === "fr" ? "Avis Clients" : "Client Reviews"}
+           <h2 className="font-serif text-4xl md:text-6xl">
+             <ShinyText
+               text={lang === "fr" ? "Avis Clients" : "Client Reviews"}
+               color="#112330"
+               shineColor="#b28e57"
+               speed={3}
+             />
            </h2>
          </div>
 
