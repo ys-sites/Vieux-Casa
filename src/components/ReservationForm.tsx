@@ -40,7 +40,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
     data.append('_template', 'table');
 
     try {
-      await fetch('https://formsubmit.co/cloud@ysdev.ca', {
+      await fetch('https://formsubmit.co/restoredinmtl@gmail.com', {
         method: 'POST',
         mode: 'no-cors',
         body: data,
