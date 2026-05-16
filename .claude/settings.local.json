@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 write1.py)",
+      "Bash(python3 write2.py)",
+      "Bash(python3 write3.py)",
+      "Bash(python3 write4.py)",
+      "Bash(python3 write5.py)",
+      "Read(//usr/**)",
+      "Bash(ls /c/Python*/python.exe)",
+      "Read(//c/Windows/**)",
+      "PowerShell(Get-Command python -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command python3 -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)",
+      "Bash(perl -e *)",
+      "Bash(python3 /tmp/write_bundle.py)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Read(//mingw64/bin/**)",
+      "PowerShell(node --version 2>&1)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Sharafath\\\\Desktop\\\\Website\\\\IronFuel\\\\.shopify-cli-env\\\\node-v24.15.0-win-x64\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"$env:ProgramFiles\\\\nodejs\\\\node.exe\" -ErrorAction SilentlyContinue)",
+      "Read(//c/Program Files/**)",
+      "Bash(Select-Object -First 50)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Sharafath\\\\Desktop\\\\Website\\\\1001 Nuit\\\\src\" -Recurse -Name | Where-Object { $_ -match \"\\\\.\\(html|css|tsx|ts|jsx|js\\)$\" } | Select-Object -First 60)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}
