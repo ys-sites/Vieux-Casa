@@ -117,14 +117,15 @@ const REVIEWS = [
 ];
 
 const GALLERY_IMAGES = [
-  "1M8A9058.jpg", "1M8A9062.jpg", "1M8A9063.jpg", "1M8A9071.jpg", 
-  "1M8A9077.jpg", "1M8A9103.jpg", "1M8A9110.jpg", "1M8A9010.jpg", 
-  "1M8A9015.jpg", "1M8A9016.jpg", "1M8A9035.jpg", "1M8A9037.jpg", 
-  "1M8A9041.jpg", "1M8A9047.jpg", "1M8A9057.jpg", "1M8A9081.jpg", 
-  "1M8A9087.jpg", "1M8A9088.jpg", "1M8A9094.jpg", "1M8A9104.jpg", 
-  "1M8A9107.jpg", "1M8A9112.jpg", "1M8A9115.jpg", "1M8A9029.jpg", 
-  "1M8A9075.jpg", "1M8A9017.jpg", "1M8A9055.jpg", "1M8A9067.jpg", 
-  "1M8A9007.jpg"
+  "1M8A9058.jpg", "1M8A9062.jpg", "1M8A9063.jpg", "1M8A9071.jpg",
+  "1M8A9077.jpg", "1M8A9103.jpg", "1M8A9110.jpg", "1M8A9010.jpg",
+  "1M8A9013.jpg", "1M8A9015.jpg", "1M8A9016.jpg", "1M8A9019.jpg",
+  "1M8A9020.jpg", "1M8A9024.jpg", "1M8A9028.jpg", "1M8A9035.jpg",
+  "1M8A9037.jpg", "1M8A9040.jpg", "1M8A9041.jpg", "1M8A9047.jpg",
+  "1M8A9057.jpg", "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9088.jpg",
+  "1M8A9094.jpg", "1M8A9104.jpg", "1M8A9107.jpg", "1M8A9112.jpg",
+  "1M8A9115.jpg", "1M8A9029.jpg", "1M8A9075.jpg", "1M8A9017.jpg",
+  "1M8A9055.jpg", "1M8A9067.jpg", "1M8A9009.jpg", "1M8A9007.jpg",
 ].map(f => `/media/${encodeURIComponent(f)}`);
 
 function GallerySection({ lang }: { lang: "fr" | "en" }) {
