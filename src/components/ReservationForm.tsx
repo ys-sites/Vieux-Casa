@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, Users, User, Mail, Phone, MessageSquare, GlassWater } from 'lucide-react';
+import { Calendar, Clock, Users, User, Mail, Phone, MessageSquare, GlassWater, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 
 interface ReservationFormProps {
   lang: 'fr' | 'en';
@@ -10,15 +10,80 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split('T')[0];
 
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/cloud@ysdev.ca', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <div className="bg-sand/80 backdrop-blur-md p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-mediterranean/5 max-w-2xl mx-auto text-center">
+        <CheckCircle size={56} className="text-gold mx-auto mb-6" />
+        <h3 className="font-serif text-3xl text-mediterranean mb-3">
+          {lang === 'fr' ? 'Demande envoyée !' : 'Request Sent!'}
+        </h3>
+        <p className="text-mediterranean/60 mb-8">
+          {lang === 'fr'
+            ? 'Nous vous contacterons très prochainement pour confirmer votre réservation.'
+            : "We'll be in touch shortly to confirm your reservation."}
+        </p>
+        <button
+          onClick={() => setStatus('idle')}
+          className="py-3 px-8 rounded-xl font-bold tracking-widest uppercase bg-gold text-mediterranean hover:bg-gold-light transition-all"
+        >
+          {lang === 'fr' ? 'Nouvelle demande' : 'New Request'}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-sand/80 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-mediterranean/5 max-w-2xl mx-auto text-center relative z-10">
 
-      <form action="https://formsubmit.co/cloud@ysdev.ca" method="POST" className="space-y-6">
-        <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : '/'} />
+      {status === 'error' && (
+        <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-left">
+          <AlertCircle size={18} className="text-red-500 shrink-0 mt-0.5" />
+          <div>
+            <p className="text-red-700 text-sm font-semibold">
+              {lang === 'fr' ? 'Erreur d\'envoi' : 'Submission failed'}
+            </p>
+            <p className="text-red-600 text-sm mt-1">
+              {lang === 'fr'
+                ? 'Appelez-nous directement : '
+                : 'Please call us directly: '}
+              <a href="tel:+14503943333" className="font-bold underline">+1 (450) 394-3333</a>
+            </p>
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
         <input type="hidden" name="_subject" value="New Event Reservation Inquiry" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="language" value={lang} />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           {/* Name */}
@@ -145,9 +210,17 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
 
         <button
           type="submit"
-          className="w-full py-4 px-8 rounded-xl font-bold tracking-widest uppercase transition-all duration-300 shadow-xl bg-gold text-mediterranean hover:bg-gold-light hover:-translate-y-1 hover:shadow-2xl"
+          disabled={status === 'loading'}
+          className="w-full py-4 px-8 rounded-xl font-bold tracking-widest uppercase transition-all duration-300 shadow-xl bg-gold text-mediterranean hover:bg-gold-light hover:-translate-y-1 hover:shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 flex items-center justify-center gap-3"
         >
-          {lang === 'fr' ? 'Envoyer la demande' : 'Send Inquiry'}
+          {status === 'loading' ? (
+            <>
+              <Loader size={18} className="animate-spin" />
+              {lang === 'fr' ? 'Envoi en cours…' : 'Sending…'}
+            </>
+          ) : (
+            lang === 'fr' ? 'Envoyer la demande' : 'Send Inquiry'
+          )}
         </button>
       </form>
     </div>
