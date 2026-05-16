@@ -120,7 +120,7 @@ const REVIEWS = [
 
 const GALLERY_IMAGES = [
   "1M8A9062.jpg", "1M8A9010.jpg", "1M8A9103.jpg", "1M8A9016.jpg",
-  "1M8A9110.jpg", "1M8A9019.jpg", "1M8A9037.jpg", "1M8A9040.jpg",
+  "1M8A9019.jpg", "1M8A9037.jpg", "1M8A9040.jpg",
   "1M8A9047.jpg", "1M8A9057.jpg", "1M8A9067.jpg", "1M8A9075.jpg",
   "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9094.jpg",
   "1M8A9112.jpg", "1M8A9029.jpg",
@@ -225,11 +225,16 @@ export default function HomePage() {
               Savor the <em className="text-gold italic font-light">exquisite</em> <br />
               flavors here
             </h1>
-            <p className="text-sand/80 font-sans text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light tracking-wide">
-              {lang === "fr" 
+            <BlurText
+              text={lang === "fr"
                 ? "Embarquez pour une odyssée culinaire spéciale où chaque plat est une symphonie de saveurs et chaque bouchée est un voyage."
                 : "Embark on a special culinary odyssey where every dish is a symphony of flavors and every bite is a journey."}
-            </p>
+              delay={60}
+              animateBy="words"
+              direction="top"
+              stepDuration={0.2}
+              className="text-sand/80 font-sans text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light tracking-wide justify-center"
+            />
           </motion.div>
 
           <motion.div
@@ -410,13 +415,24 @@ export default function HomePage() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col md:flex-row items-center gap-16 relative z-10">
           <div className="w-full md:w-1/2">
             <h2 className="font-serif text-5xl md:text-7xl leading-tight mb-8">
-              Experience <br/> <em className="text-gold">Luxurious</em> Dining
+              <ShinyText
+                text="Experience"
+                color="#fbf8f4"
+                shineColor="#b28e57"
+                speed={3}
+              />
+              <br/> <em className="text-gold">Luxurious</em> Dining
             </h2>
-            <p className="text-sand/80 font-sans text-lg max-w-md leading-relaxed">
-              {lang === "fr"
+            <BlurText
+              text={lang === "fr"
                ? "Découvrez un monde où chaque plat est un chef-d'œuvre, conçu avec les ingrédients locaux les plus frais de la Méditerranée et du Québec. Vieux Casa allie les traditions culinaires helléniques à une élégance intemporelle."
                : "Discover a new world where every dish is a masterpiece, crafted with the freshest local ingredients and Mediterranean finesse. Vieux Casa marries Hellenic culinary traditions with timeless elegance."}
-            </p>
+              delay={60}
+              animateBy="words"
+              direction="top"
+              stepDuration={0.2}
+              className="text-sand/80 font-sans text-lg max-w-md leading-relaxed"
+            />
           </div>
           <div className="w-full md:w-1/2">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
@@ -508,6 +524,32 @@ export default function HomePage() {
               ))}
             </div>
          </div>
+
+         {/* Google Reviews CTA */}
+         <div className="max-w-2xl mx-auto px-6 md:px-16 mt-16">
+           <a
+             href="https://www.google.com/maps/search/Vieux+Casa+108+Rue+St-Paul+Joliette+QC"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="flex items-center gap-5 bg-mediterranean border border-gold/20 rounded-2xl p-6 md:p-8 hover:border-gold/50 transition-all group shadow-lg"
+           >
+             <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
+               <Star size={22} className="fill-gold text-gold" />
+             </div>
+             <div className="flex-1 text-left">
+               <p className="font-serif text-sand font-semibold text-lg leading-tight">
+                 {lang === "fr" ? "Vous avez apprécié votre expérience ? Laissez-nous un avis Google 5 étoiles !" : "Enjoyed your experience? Leave us a 5-star Google review!"}
+               </p>
+               <p className="text-sand/50 text-sm mt-1 font-sans">
+                 {lang === "fr" ? "Aidez d'autres convives à nous découvrir." : "It helps more guests discover us."}
+               </p>
+             </div>
+             <div className="shrink-0 flex items-center gap-2 bg-gold text-mediterranean font-bold text-sm tracking-wider uppercase px-5 py-3 rounded-xl group-hover:bg-gold-light transition-colors whitespace-nowrap">
+               {lang === "fr" ? "Nous noter" : "Review Us"}
+               <ArrowUpRight size={16} />
+             </div>
+           </a>
+         </div>
       </section>
 
       {/* Reservation Section */}
@@ -526,30 +568,41 @@ export default function HomePage() {
                 key={i}
                 className="text-[25vw] font-serif uppercase leading-none font-bold text-mediterranean select-none px-12 md:px-24 lining-nums"
               >
-                {lang === "fr" ? "Réservation" : "Reservation"}
+                {lang === "fr" ? "Événements" : "Events"}
               </h2>
             ))}
           </motion.div>
         </div>
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10 w-full">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-12"
           >
             <h2 className="font-serif text-5xl md:text-7xl uppercase tracking-widest leading-[1] mb-6 text-mediterranean">
-              {lang === "fr" ? "Réservez " : "Book "} <br />
+              <ShinyText
+                text={lang === "fr" ? "Réservez" : "Book"}
+                color="#112330"
+                shineColor="#b28e57"
+                speed={3}
+              />
+              <br />
               <span className="text-gold italic normal-case font-light drop-shadow-sm">
-                {lang === "fr" ? "votre table" : "your table"}
+                {lang === "fr" ? "vos événements" : "your events"}
               </span>
             </h2>
             <div className="max-w-lg mx-auto">
-              <p className="text-sm md:text-lg font-medium opacity-70 leading-relaxed justify-center">
-                {lang === "fr"
-                  ? "Remplissez le formulaire ci-dessous pour réserver votre table."
-                  : "Fill out the form below to book your table with us."}
-              </p>
+              <BlurText
+                text={lang === "fr"
+                  ? "Planifiez votre prochain événement spécial avec nous."
+                  : "Plan your next special event with us."}
+                delay={80}
+                animateBy="words"
+                direction="top"
+                stepDuration={0.25}
+                className="text-sm md:text-lg font-medium opacity-70 leading-relaxed justify-center"
+              />
             </div>
           </motion.div>
 
