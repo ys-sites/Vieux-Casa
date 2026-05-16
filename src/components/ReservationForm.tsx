@@ -34,15 +34,31 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formsubmit.co/ajax/restoredinmtl@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, lang }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: 'New Event Reservation Inquiry – Vieux Casa',
+          'Full Name': formData.name,
+          'Phone Number': formData.phone,
+          'Email Address': formData.email,
+          'Date': formData.date,
+          'Time': formData.time,
+          'Number of Guests': formData.guests,
+          'Event Type': formData.eventType,
+          'Special Requests': formData.requests || '—',
+          'Language': lang === 'fr' ? 'French' : 'English',
+          _captcha: 'false',
+          _template: 'table',
+        }),
       });
 
       const result = await response.json();
 
-      if (result.success) {
+      if (result.success === 'true' || result.success === true) {
         setStatus('success');
         setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
       } else {
@@ -96,7 +112,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* Name */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <User size={14} />
@@ -109,7 +124,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             />
           </div>
 
-          {/* Phone */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <Phone size={14} />
@@ -122,7 +136,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             />
           </div>
 
-          {/* Email */}
           <div className="space-y-2 md:col-span-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <Mail size={14} />
@@ -135,7 +148,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             />
           </div>
 
-          {/* Date */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <Calendar size={14} />
@@ -150,7 +162,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             </p>
           </div>
 
-          {/* Time */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <Clock size={14} />
@@ -171,7 +182,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             </select>
           </div>
 
-          {/* Guests */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <Users size={14} />
@@ -186,7 +196,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             </p>
           </div>
 
-          {/* Event Type */}
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <GlassWater size={14} />
@@ -204,7 +213,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             </select>
           </div>
 
-          {/* Special Requests */}
           <div className="space-y-2 md:col-span-2">
             <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
               <MessageSquare size={14} />
