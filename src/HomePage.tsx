@@ -455,7 +455,7 @@ export default function HomePage() {
            <p className="text-gold font-bold tracking-[0.25em] text-sm uppercase mb-4">
              {lang === "fr" ? "Témoignages" : "Testimonials"}
            </p>
-           <h2 className="font-serif text-4xl md:text-6xl">
+           <h2 className="font-serif text-4xl md:text-6xl mb-10">
              <ShinyText
                text={lang === "fr" ? "Avis Clients" : "Client Reviews"}
                color="#112330"
@@ -463,6 +463,30 @@ export default function HomePage() {
                speed={3}
              />
            </h2>
+
+           {/* Google Reviews CTA */}
+           <a
+             href="https://www.google.com/maps/search/Vieux+Casa+108+Rue+St-Paul+Joliette+QC"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="inline-flex items-center gap-5 bg-mediterranean border border-gold/20 rounded-2xl p-5 md:p-6 hover:border-gold/50 transition-all group shadow-lg max-w-xl w-full text-left"
+           >
+             <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
+               <Star size={20} className="fill-gold text-gold" />
+             </div>
+             <div className="flex-1">
+               <p className="font-serif text-sand font-semibold text-base leading-snug">
+                 {lang === "fr" ? "Vous avez apprécié votre expérience ? Laissez-nous un avis Google 5 étoiles !" : "Enjoyed your experience? Leave us a 5-star Google review!"}
+               </p>
+               <p className="text-sand/50 text-sm mt-0.5 font-sans">
+                 {lang === "fr" ? "Aidez d'autres convives à nous découvrir." : "It helps more guests discover us."}
+               </p>
+             </div>
+             <div className="shrink-0 flex items-center gap-2 bg-gold text-mediterranean font-bold text-xs tracking-wider uppercase px-4 py-2.5 rounded-xl group-hover:bg-gold-light transition-colors whitespace-nowrap">
+               {lang === "fr" ? "Nous noter" : "Review Us"}
+               <ArrowUpRight size={14} />
+             </div>
+           </a>
          </div>
 
          <div className="w-full relative flex flex-col gap-8 md:gap-12 mt-12 overflow-hidden py-10 pointer-events-none">
@@ -525,31 +549,6 @@ export default function HomePage() {
             </div>
          </div>
 
-         {/* Google Reviews CTA */}
-         <div className="max-w-2xl mx-auto px-6 md:px-16 mt-16">
-           <a
-             href="https://www.google.com/maps/search/Vieux+Casa+108+Rue+St-Paul+Joliette+QC"
-             target="_blank"
-             rel="noopener noreferrer"
-             className="flex items-center gap-5 bg-mediterranean border border-gold/20 rounded-2xl p-6 md:p-8 hover:border-gold/50 transition-all group shadow-lg"
-           >
-             <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold/20 transition-colors">
-               <Star size={22} className="fill-gold text-gold" />
-             </div>
-             <div className="flex-1 text-left">
-               <p className="font-serif text-sand font-semibold text-lg leading-tight">
-                 {lang === "fr" ? "Vous avez apprécié votre expérience ? Laissez-nous un avis Google 5 étoiles !" : "Enjoyed your experience? Leave us a 5-star Google review!"}
-               </p>
-               <p className="text-sand/50 text-sm mt-1 font-sans">
-                 {lang === "fr" ? "Aidez d'autres convives à nous découvrir." : "It helps more guests discover us."}
-               </p>
-             </div>
-             <div className="shrink-0 flex items-center gap-2 bg-gold text-mediterranean font-bold text-sm tracking-wider uppercase px-5 py-3 rounded-xl group-hover:bg-gold-light transition-colors whitespace-nowrap">
-               {lang === "fr" ? "Nous noter" : "Review Us"}
-               <ArrowUpRight size={16} />
-             </div>
-           </a>
-         </div>
       </section>
 
       {/* Reservation Section */}
