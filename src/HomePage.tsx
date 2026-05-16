@@ -587,8 +587,7 @@ export default function HomePage() {
 
                    <h6 className="font-serif text-xl tracking-wide text-sand mt-4">Hours</h6>
                    <p className="text-sand/50 mt-1">
-                     Tue - Sun ( 11:00 - 21:00 )<br/>
-                     Closed on Monday
+                     Tue - Sun ( 11:00 - 21:00 ) &nbsp;·&nbsp; Closed on Monday
                    </p>
                  </div>
               </div>
