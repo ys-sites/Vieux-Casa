@@ -29,41 +29,24 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
   const set = (field: keyof FormFields) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
 
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append('_subject', 'New Event Reservation Inquiry – Vieux Casa');
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/cloud@ysdev.ca', {
+      await fetch('https://formsubmit.co/cloud@ysdev.ca', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          _subject: 'New Event Reservation Inquiry – Vieux Casa',
-          'Full Name': formData.name,
-          'Phone Number': formData.phone,
-          'Email Address': formData.email,
-          'Date': formData.date,
-          'Time': formData.time,
-          'Number of Guests': formData.guests,
-          'Event Type': formData.eventType,
-          'Special Requests': formData.requests || '—',
-          'Language': lang,
-          _captcha: 'false',
-          _template: 'table',
-        }),
+        mode: 'no-cors',
+        body: data,
       });
-
-      const result = await response.json();
-
-      if (result.success === 'true' || result.success === true) {
-        setStatus('success');
-        setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
-      } else {
-        setStatus('error');
-      }
+      setStatus('success');
+      setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
     } catch {
       setStatus('error');
     }
