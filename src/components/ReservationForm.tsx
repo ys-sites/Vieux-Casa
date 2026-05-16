@@ -5,37 +5,62 @@ interface ReservationFormProps {
   lang: 'fr' | 'en';
 }
 
+interface FormFields {
+  name: string;
+  phone: string;
+  email: string;
+  date: string;
+  time: string;
+  guests: string;
+  eventType: string;
+  requests: string;
+}
+
 export default function ReservationForm({ lang }: ReservationFormProps) {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split('T')[0];
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState<FormFields>({
+    name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '',
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const set = (field: keyof FormFields) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+    setFormData(prev => ({ ...prev, [field]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
 
-    const form = e.currentTarget;
-    const raw = new FormData(form);
-    const body: Record<string, string> = {};
-    raw.forEach((v, k) => { body[k] = v as string; });
-
     try {
-      const res = await fetch('https://formsubmit.co/ajax/cloud@ysdev.ca', {
+      const response = await fetch('https://formsubmit.co/ajax/cloud@ysdev.ca', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          _subject: 'New Event Reservation Inquiry – Vieux Casa',
+          'Full Name': formData.name,
+          'Phone Number': formData.phone,
+          'Email Address': formData.email,
+          'Date': formData.date,
+          'Time': formData.time,
+          'Number of Guests': formData.guests,
+          'Event Type': formData.eventType,
+          'Special Requests': formData.requests || '—',
+          'Language': lang,
+          _captcha: 'false',
+          _template: 'table',
+        }),
       });
 
-      const json = await res.json().catch(() => ({}));
+      const result = await response.json();
 
-      if (res.ok && json.success !== 'false') {
+      if (result.success === 'true' || result.success === true) {
         setStatus('success');
-        form.reset();
+        setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
       } else {
         setStatus('error');
       }
@@ -74,12 +99,10 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
           <AlertCircle size={18} className="text-red-500 shrink-0 mt-0.5" />
           <div>
             <p className="text-red-700 text-sm font-semibold">
-              {lang === 'fr' ? 'Erreur d\'envoi' : 'Submission failed'}
+              {lang === 'fr' ? "Erreur d'envoi" : 'Submission failed'}
             </p>
             <p className="text-red-600 text-sm mt-1">
-              {lang === 'fr'
-                ? 'Appelez-nous directement : '
-                : 'Please call us directly: '}
+              {lang === 'fr' ? 'Appelez-nous directement : ' : 'Please call us directly: '}
               <a href="tel:+14503943333" className="font-bold underline">+1 (450) 394-3333</a>
             </p>
           </div>
@@ -87,10 +110,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <input type="hidden" name="_subject" value="New Event Reservation Inquiry" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="language" value={lang} />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           {/* Name */}
@@ -100,7 +119,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Nom complet' : 'Full Name'}
             </label>
             <input
-              type="text" required name="name"
+              type="text" required value={formData.name} onChange={set('name')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow placeholder:text-mediterranean/30"
               placeholder={lang === 'fr' ? 'Jean-Paul' : 'John Doe'}
             />
@@ -113,7 +132,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Téléphone' : 'Phone Number'}
             </label>
             <input
-              type="tel" required name="phone"
+              type="tel" required value={formData.phone} onChange={set('phone')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow placeholder:text-mediterranean/30"
               placeholder="(514) 123-4567"
             />
@@ -126,7 +145,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Courriel' : 'Email Address'}
             </label>
             <input
-              type="email" required name="email"
+              type="email" required value={formData.email} onChange={set('email')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow placeholder:text-mediterranean/30"
               placeholder={lang === 'fr' ? 'jean@exemple.com' : 'john@example.com'}
             />
@@ -139,7 +158,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Date' : 'Date'}
             </label>
             <input
-              type="date" required min={minDate} name="date"
+              type="date" required min={minDate} value={formData.date} onChange={set('date')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow"
             />
             <p className="text-[10px] text-mediterranean/50 mt-1">
@@ -154,7 +173,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Heure' : 'Time'}
             </label>
             <select
-              required name="time" defaultValue=""
+              required value={formData.time} onChange={set('time')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow appearance-none"
             >
               <option value="" disabled>-- : --</option>
@@ -175,7 +194,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Invités' : 'Guests'}
             </label>
             <input
-              type="number" required min={40} max={500} name="guests" defaultValue={40}
+              type="number" required min={40} max={500} value={formData.guests} onChange={set('guests')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow"
             />
             <p className="text-[10px] text-mediterranean/50 mt-1">
@@ -190,14 +209,14 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? "Type d'événement" : 'Event Type'}
             </label>
             <select
-              required name="eventType" defaultValue=""
+              required value={formData.eventType} onChange={set('eventType')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow appearance-none"
             >
               <option value="" disabled>{lang === 'fr' ? 'Sélectionner...' : 'Select...'}</option>
-              <option value="birthday">{lang === 'fr' ? 'Anniversaire' : 'Birthday'}</option>
-              <option value="corporate">{lang === 'fr' ? 'Événement corporatif' : 'Corporate Event'}</option>
-              <option value="wedding">{lang === 'fr' ? 'Mariage / Fiançailles' : 'Wedding / Engagement'}</option>
-              <option value="other">{lang === 'fr' ? 'Autre' : 'Other'}</option>
+              <option value="Birthday">{lang === 'fr' ? 'Anniversaire' : 'Birthday'}</option>
+              <option value="Corporate Event">{lang === 'fr' ? 'Événement corporatif' : 'Corporate Event'}</option>
+              <option value="Wedding / Engagement">{lang === 'fr' ? 'Mariage / Fiançailles' : 'Wedding / Engagement'}</option>
+              <option value="Other">{lang === 'fr' ? 'Autre' : 'Other'}</option>
             </select>
           </div>
 
@@ -208,7 +227,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               {lang === 'fr' ? 'Demandes spéciales' : 'Special Requests'}
             </label>
             <textarea
-              name="requests" rows={2}
+              value={formData.requests} onChange={set('requests')} rows={2}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow placeholder:text-mediterranean/30 resize-none"
               placeholder={lang === 'fr' ? 'Décrivez votre événement, besoins particuliers…' : 'Describe your event, any special requirements…'}
             />
