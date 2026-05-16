@@ -34,25 +34,10 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
     setStatus('loading');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: process.env.VITE_WEB3FORMS_KEY,
-          subject: 'New Event Reservation Inquiry – Vieux Casa',
-          'Full Name': formData.name,
-          'Phone Number': formData.phone,
-          'Email Address': formData.email,
-          'Date': formData.date,
-          'Time': formData.time,
-          'Number of Guests': formData.guests,
-          'Event Type': formData.eventType,
-          'Special Requests': formData.requests || '—',
-          'Language': lang === 'fr' ? 'French' : 'English',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, lang }),
       });
 
       const result = await response.json();
