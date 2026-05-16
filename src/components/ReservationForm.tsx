@@ -29,24 +29,25 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
   const set = (field: keyof FormFields) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
 
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    data.append('_subject', 'New Event Reservation Inquiry – Vieux Casa');
-    data.append('_captcha', 'false');
-    data.append('_template', 'table');
-
     try {
-      await fetch('https://formsubmit.co/restoredinmtl@gmail.com', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        mode: 'no-cors',
-        body: data,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, lang }),
       });
-      setStatus('success');
-      setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
+      } else {
+        setStatus('error');
+      }
     } catch {
       setStatus('error');
     }
