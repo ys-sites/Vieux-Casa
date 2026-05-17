@@ -339,7 +339,14 @@ export default function HomePage() {
                   </div>
                   <ul className="flex flex-col gap-8">
                     {MENU_CATEGORIES[catIndex].items.map((item, idx) => (
-                      <li key={idx} className="flex flex-col gap-2 w-full group">
+                      <motion.li
+                        key={idx}
+                        initial={{ opacity: 0, filter: 'blur(8px)', y: 12 }}
+                        whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.35, delay: idx * 0.07, ease: 'easeOut' }}
+                        className="flex flex-col gap-2 w-full group"
+                      >
                         <div className="flex justify-between items-baseline gap-4 w-full">
                           <p className="font-sans font-bold text-[13px] md:text-sm tracking-[0.1em] uppercase text-mediterranean/90 group-hover:text-mediterranean transition-colors">
                             {lang === "fr" ? item.name_fr : item.name_en}
@@ -354,7 +361,7 @@ export default function HomePage() {
                             {lang === "fr" ? item.desc_fr : item.desc_en}
                           </p>
                         )}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>
@@ -388,7 +395,14 @@ export default function HomePage() {
                   </div>
                   <ul className="flex flex-col gap-8">
                     {MENU_CATEGORIES[catIndex].items.map((item, idx) => (
-                      <li key={idx} className="flex flex-col gap-2 w-full group">
+                      <motion.li
+                        key={idx}
+                        initial={{ opacity: 0, filter: 'blur(8px)', y: 12 }}
+                        whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.35, delay: idx * 0.07, ease: 'easeOut' }}
+                        className="flex flex-col gap-2 w-full group"
+                      >
                         <div className="flex justify-between items-baseline gap-4 w-full">
                           <p className="font-sans font-bold text-[13px] md:text-sm tracking-[0.1em] uppercase text-mediterranean/90 group-hover:text-mediterranean transition-colors">
                             {lang === "fr" ? item.name_fr : item.name_en}
@@ -403,7 +417,7 @@ export default function HomePage() {
                             {lang === "fr" ? item.desc_fr : item.desc_en}
                           </p>
                         )}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>
