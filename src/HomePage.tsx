@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { MoveRight, Star, MapPin, Clock, Phone, ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import Navbar from "./components/Navbar";
-import ReservationForm from "./components/ReservationForm";
 import ShinyText from "./components/ui/ShinyText";
 import BlurText from "./components/ui/BlurText";
 
@@ -158,13 +157,13 @@ function GallerySection({ lang }: { lang: "fr" | "en" }) {
           {GALLERY_IMAGES.map((src, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+              viewport={{ once: true, amount: 0.25, margin: "0px 0px -120px 0px" }}
               transition={{ 
-                duration: 0.8, 
-                delay: (idx % 8) * 0.1, 
-                ease: [0.21, 0.47, 0.32, 0.98] 
+                duration: 0.75, 
+                delay: (idx % 8) * 0.05, 
+                ease: "easeOut" 
               }}
               className="break-inside-avoid relative group overflow-hidden rounded-md shadow-sm hover:shadow-xl transition-shadow duration-500 bg-black"
             >
@@ -575,32 +574,6 @@ export default function HomePage() {
 
       </section>
 
-      {/* Reservation Section */}
-      <section
-        id="reservation"
-        className="min-h-[70vh] bg-sand text-mediterranean py-32 w-full relative overflow-hidden flex items-center border-t border-mediterranean/10"
-      >
-        <div className="absolute inset-0 opacity-[0.03] flex items-center pointer-events-none overflow-hidden whitespace-nowrap">
-          <motion.div
-            className="flex"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, ease: "linear", repeat: Infinity }}
-          >
-            {[...Array(8)].map((_, i) => (
-              <h2
-                key={i}
-                className="text-[25vw] font-serif uppercase leading-none font-bold text-mediterranean select-none px-12 md:px-24 lining-nums"
-              >
-                {lang === "fr" ? "Événements" : "Events"}
-              </h2>
-            ))}
-          </motion.div>
-        </div>
-        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10 w-full">
-          <ReservationForm lang={lang} />
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-[#0b1720] text-sand w-full">
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 py-20 flex flex-col md:flex-row justify-between gap-16">
@@ -621,7 +594,6 @@ export default function HomePage() {
                  <div className="flex flex-col gap-4">
                    <a href="#about" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "À Propos" : "About"}</a>
                    <a href="#gallery" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "Galerie" : "Gallery"}</a>
-                   <a href="#reservation" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "Réservation" : "Reservation"}</a>
                  </div>
               </div>
 

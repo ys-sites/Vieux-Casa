@@ -133,7 +133,6 @@ export default function Navbar({
               { id: "about", en: "Our Story", fr: "Notre Histoire" },
               { id: "gallery", en: "Gallery", fr: "Galerie" },
               { id: "testimonials", en: "Reviews", fr: "Avis" },
-              { id: "reservation", en: "Reservation", fr: "Réservation" },
             ].map((item) => (
               <button
                 key={item.id}
