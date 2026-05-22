@@ -257,21 +257,21 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="https://maps.google.com/?q=108+Rue+St-Paul+Joliette,+QC+J6E+5G3" target="_blank" rel="noopener noreferrer" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
+            <a href="https://maps.google.com/maps/place/data=!4m2!3m1!1s0x4cc8bdf1c625d433:0x5c4254578bb1f180?entry=s&sa=X&ved=2ahUKEwj-M38TI88uUAxWNGVkFHTrz-LDgQ4kB6BAgYEAA&hl=en" target="_blank" rel="noopener noreferrer" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
               <div className="w-14 h-14 flex items-center justify-center shrink-0 rounded-full bg-sand/10 group-hover:bg-gold/20 mr-2 transition-colors">
                 <MapPin size={20} className="text-sand group-hover:text-gold transition-colors" />
               </div>
               <span className="text-sand/90 group-hover:text-sand font-sans text-sm tracking-wide">
-                108 Rue St-Paul, Joliette
+                1075 Bd Firestone, Joliette
               </span>
             </a>
             
-            <a href="tel:+14503943333" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
+            <a href="tel:+14507531119" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
               <div className="w-14 h-14 flex items-center justify-center shrink-0 rounded-full bg-sand/10 group-hover:bg-gold/20 mr-2 transition-colors">
                 <Phone size={20} className="text-sand group-hover:text-gold transition-colors" />
               </div>
               <span className="text-sand/90 group-hover:text-sand font-serif text-lg tracking-widest">
-                450-394-3333
+                450-753-1119
               </span>
             </a>
           </motion.div>
@@ -489,7 +489,7 @@ export default function HomePage() {
 
            {/* Google Reviews CTA */}
            <a
-             href="https://www.google.com/maps/search/Vieux+Casa+108+Rue+St-Paul+Joliette+QC"
+             href="https://maps.google.com/maps/place/data=!4m2!3m1!1s0x4cc8bdf1c625d433:0x5c4254578bb1f180?entry=s&sa=X&ved=2ahUKEwj-M38TI88uUAxWNGVkFHTrz-LDgQ4kB6BAgYEAA&hl=en"
              target="_blank"
              rel="noopener noreferrer"
              className="inline-flex items-center gap-5 bg-sand border border-gold/40 rounded-2xl p-5 md:p-6 hover:border-gold transition-all group shadow-md max-w-xl w-full text-left"
@@ -609,11 +609,11 @@ export default function HomePage() {
               <div className="flex flex-col gap-6">
                  <h6 className="font-serif text-2xl text-sand">Location</h6>
                  <div className="flex flex-col gap-3 text-sand/60 text-sm">
-                   <a href="https://maps.google.com/?q=108+Rue+St-Paul+Joliette,+QC+J6E+5G3" target="_blank" rel="noopener noreferrer" className="text-sand leading-relaxed hover:text-gold transition-colors">
-                     108 Rue St-Paul<br/>Joliette, QC J6E 5G3
+                   <a href="https://maps.google.com/maps/place/data=!4m2!3m1!1s0x4cc8bdf1c625d433:0x5c4254578bb1f180?entry=s&sa=X&ved=2ahUKEwj-M38TI88uUAxWNGVkFHTrz-LDgQ4kB6BAgYEAA&hl=en" target="_blank" rel="noopener noreferrer" className="text-sand leading-relaxed hover:text-gold transition-colors">
+                      1075 Bd Firestone<br/>Joliette, QC J6E 6X6
                    </a>
-                   <a href="tel:+14503943333" className="font-sans text-sand/60 hover:text-gold transition-colors">
-                     +1 (450) 394-3333
+                   <a href="tel:+14507531119" className="font-sans text-sand/60 hover:text-gold transition-colors">
+                     +1 (450) 753-1119
                    </a>
                  </div>
               </div>
