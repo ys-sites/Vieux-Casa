@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
-import { MoveRight, Star, MapPin, Clock, Phone, ArrowUpRight, Instagram, Facebook, ArrowRight, ArrowLeft } from "lucide-react";
+import { MoveRight, Star, MapPin, Clock, Phone, ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import Navbar from "./components/Navbar";
 import ReservationForm from "./components/ReservationForm";
 import ShinyText from "./components/ui/ShinyText";
@@ -597,38 +597,6 @@ export default function HomePage() {
           </motion.div>
         </div>
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="font-serif text-5xl md:text-7xl uppercase tracking-widest leading-[1] mb-6 text-mediterranean">
-              <ShinyText
-                text={lang === "fr" ? "Réservez" : "Book"}
-                color="#112330"
-                shineColor="#b28e57"
-                speed={3}
-              />
-              <br />
-              <span className="text-gold italic normal-case font-light drop-shadow-sm">
-                {lang === "fr" ? "vos événements" : "your events"}
-              </span>
-            </h2>
-            <div className="max-w-lg mx-auto">
-              <BlurText
-                text={lang === "fr"
-                  ? "Planifiez votre prochain événement spécial avec nous."
-                  : "Plan your next special event with us."}
-                delay={80}
-                animateBy="words"
-                direction="top"
-                stepDuration={0.25}
-                className="text-sm md:text-lg font-medium opacity-70 leading-relaxed justify-center"
-              />
-            </div>
-          </motion.div>
-
           <ReservationForm lang={lang} />
         </div>
       </section>
@@ -695,15 +663,6 @@ export default function HomePage() {
               <p className="text-sand/40 text-xs tracking-wider">
                 COPYRIGHT © {new Date().getFullYear()} VIEUX CASA. ALL RIGHTS RESERVED.
               </p>
-              
-              <div className="flex gap-4">
-                 <a href="#" className="w-10 h-10 rounded-full border border-sand/10 flex items-center justify-center text-sand hover:bg-gold hover:text-mediterranean hover:border-gold transition-all">
-                   <Facebook size={16} />
-                 </a>
-                 <a href="https://www.instagram.com/vieuxcasa/" className="w-10 h-10 rounded-full border border-sand/10 flex items-center justify-center text-sand hover:bg-gold hover:text-mediterranean hover:border-gold transition-all">
-                   <Instagram size={16} />
-                 </a>
-              </div>
 
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, Users, User, Mail, Phone, MessageSquare, GlassWater, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { Calendar, Clock, Users, User, Phone, MessageSquare, GlassWater, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 
 interface ReservationFormProps {
   lang: 'fr' | 'en';
@@ -8,7 +8,6 @@ interface ReservationFormProps {
 interface FormFields {
   name: string;
   phone: string;
-  email: string;
   date: string;
   time: string;
   guests: string;
@@ -23,13 +22,13 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState<FormFields>({
-    name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '',
+    name: '', phone: '', date: '', time: '', guests: '40', eventType: '', requests: '',
   });
 
   const set = (field: keyof FormFields) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
 
-  const reset = () => setFormData({ name: '', phone: '', email: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
+  const reset = () => setFormData({ name: '', phone: '', date: '', time: '', guests: '40', eventType: '', requests: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,18 +111,6 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
               type="tel" required value={formData.phone} onChange={set('phone')}
               className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow placeholder:text-mediterranean/30"
               placeholder="(514) 123-4567"
-            />
-          </div>
-
-          <div className="space-y-2 md:col-span-2">
-            <label className="text-xs font-bold uppercase tracking-wider text-mediterranean/60 flex items-center gap-2">
-              <Mail size={14} />
-              {lang === 'fr' ? 'Courriel' : 'Email Address'}
-            </label>
-            <input
-              type="email" required value={formData.email} onChange={set('email')}
-              className="w-full bg-sand-dark border-none rounded-xl px-4 py-3 text-mediterranean focus:ring-2 focus:ring-gold transition-shadow placeholder:text-mediterranean/30"
-              placeholder={lang === 'fr' ? 'jean@exemple.com' : 'john@example.com'}
             />
           </div>
 
