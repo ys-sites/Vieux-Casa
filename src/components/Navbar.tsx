@@ -42,7 +42,7 @@ export default function Navbar({
             className="font-serif w-max mx-2 text-[18px] md:text-xl xl:text-2xl whitespace-nowrap tracking-[0.2em] uppercase mr-3 lg:mr-4 xl:mr-10 text-sand hover:opacity-80 transition-opacity cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            VIEUX CASA
+            VILLA GRECQUE
           </div>
         </div>
 
@@ -59,12 +59,7 @@ export default function Navbar({
           >
             {lang === "fr" ? "Notre Histoire" : "Our Story"}
           </button>
-          <button
-            onClick={() => scrollTo("gallery")}
-            className="transition-colors hover-underline-animation hover:text-gold"
-          >
-            {lang === "fr" ? "Galerie" : "Gallery"}
-          </button>
+
           <button
             onClick={() => scrollTo("testimonials")}
             className="transition-colors hover-underline-animation hover:text-gold"
@@ -117,7 +112,7 @@ export default function Navbar({
               className="font-serif text-xl tracking-[0.2em] uppercase text-sand cursor-pointer"
               onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMenuOpen(false); }}
             >
-              VIEUX CASA
+              VILLA GRECQUE
             </div>
             <button
               onClick={() => setMenuOpen(false)}
@@ -131,8 +126,8 @@ export default function Navbar({
             {[
               { id: "menu", en: "Menu", fr: "Menu" },
               { id: "about", en: "Our Story", fr: "Notre Histoire" },
-              { id: "gallery", en: "Gallery", fr: "Galerie" },
               { id: "testimonials", en: "Reviews", fr: "Avis" },
+              { id: "reservation", en: "Reservation", fr: "Réservation" },
             ].map((item) => (
               <button
                 key={item.id}

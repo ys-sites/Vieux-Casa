@@ -81,7 +81,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
             </p>
             <p className="text-red-600 text-sm mt-1">
               {lang === 'fr' ? 'Appelez-nous directement : ' : 'Please call us directly: '}
-              <a href="tel:+14503943333" className="font-bold underline">+1 (450) 394-3333</a>
+              <a href="tel:+14384048385" className="font-bold underline">+1 (438) 404-8385</a>
             </p>
           </div>
         </div>

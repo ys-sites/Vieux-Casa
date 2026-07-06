@@ -13,12 +13,12 @@ const MENU_CATEGORIES = [
     items: [
       { id: "#4", name_fr: "Combo de poulet et kebab", name_en: "Chicken and kebab combo", price: "$21.99", desc_en: "", desc_fr: "" },
       { id: "#1", name_fr: "Brochette de poulet ou kebab", name_en: "Chicken or kebab skewer", price: "$18.99", desc_en: "Served with basmati rice, 2 choices of salads, greek potatoes with a sauce of your choice.", desc_fr: "Servi avec riz basmati, 2 choix de salades, pommes de terre grecques avec une sauce au choix." },
-      { id: "#3", name_fr: "Sandwich Vieuxcasa sur pain naan", name_en: "Vieuxcasa Sandwich on naan bread", price: "$15.99", desc_fr: "Poulet ou kebab servi avec pommes de terre à la grecque ou riz ou salade.", desc_en: "Chicken or kebab served with greek potatoes or rice or salad." },
+      { id: "#3", name_fr: "Sandwich Villa sur pain naan", name_en: "Villa Sandwich on naan bread", price: "$15.99", desc_fr: "Poulet ou kebab servi avec pommes de terre à la grecque ou riz ou salade.", desc_en: "Chicken or kebab served with greek potatoes or rice or salad." },
       { id: "#2", name_fr: "Assiette de filet de poulet", name_en: "Chicken fillet plate", price: "$18.99", desc_fr: "", desc_en: "" },
       { id: "#10", name_fr: "Poulet et crevettes papillon", name_en: "Chicken and butterfly shrimp", price: "$20.99", desc_fr: "", desc_en: "" },
       { id: "#9", name_fr: "Assiette de crevettes papillon", name_en: "Butterfly shrimp plate", price: "$20.99", desc_fr: "", desc_en: "" }
     ],
-    image: "/media/1M8A9010.jpg",
+    image: "/media/most_ordered.jpg",
     desc_en: "Here are the dishes and items most frequently ordered at this business.",
     desc_fr: "Voici les plats et les articles le plus souvent commandés à ce commerce."
   },
@@ -35,7 +35,7 @@ const MENU_CATEGORIES = [
       { id: "#12", name_fr: "Salade de crevettes", name_en: "Grilled shrimp salad", price: "$17.99", desc_en: "", desc_fr: "" },
       { id: "#15", name_fr: "Assiette végétarienne", name_en: "Vegetarian plate", price: "$17.99", desc_en: "", desc_fr: "" },
     ],
-    image: "/media/1M8A9016.jpg",
+    image: "/media/main_menu.jpg",
     desc_en: "All our principal plates are served with 2 choices of salads, Basmati rice and Greek potatoes with a sauce of your choice.",
     desc_fr: "Toutes nos assiettes principales sont servies avec 2 choix de salades, riz basmati et pommes de terre grecques avec une sauce au choix."
   },
@@ -53,7 +53,7 @@ const MENU_CATEGORIES = [
       { id: "", name_fr: "Extra salade césar", name_en: "Extra Caesar Salad", price: "$4.99" },
       { id: "", name_fr: "Riz Basmati", name_en: "Basmati Rice", price: "$4.99" },
     ],
-    image: "/media/1M8A9019.jpg",
+    image: "/media/side_orders.jpg",
     desc_en: "The perfect additions to complete your dining experience.",
     desc_fr: "Les ajouts parfaits pour compléter votre expérience culinaire."
   },
@@ -66,7 +66,7 @@ const MENU_CATEGORIES = [
       { id: "", name_fr: "Pepsi", name_en: "Pepsi", price: "$2.99", desc_en: "Classic, refreshing cola soda.", desc_fr: "Soda cola classique et rafraîchissant." },
       { id: "", name_fr: "7Up", name_en: "7Up", price: "$2.99", desc_en: "Crisp, refreshing lemon-lime carbonated drink for a rejuvenating burst of flavor.", desc_fr: "Boisson gazeuse citron-lime vive et rafraîchissante pour une explosion de saveur rajeunissante." },
     ],
-    image: "/media/1M8A9062.jpg",
+    image: "/media/drinks.jpg",
     desc_en: "Refresh and sweeten the end of your magical Greek journey.",
     desc_fr: "Rafraîchissez et adoucissez la fin de votre voyage grec magique."
   },
@@ -76,7 +76,7 @@ const MENU_CATEGORIES = [
     items: [
       { id: "", name_fr: "Baklava grec", name_en: "Greek Baklava", price: "$4.99", desc_en: "Layers of flaky filo pastry, typically includes chopped nuts, sweetened with syrup.", desc_fr: "Couches de pâte filo feuilletée, comprenant généralement des noix hachées, sucrées avec du sirop." },
     ],
-    image: "/media/1M8A9067.jpg",
+    image: "/media/desserts.jpg",
     desc_en: "Perfect sweet ending to your meal.",
     desc_fr: "Parfaite douceur pour terminer votre repas."
   }
@@ -117,70 +117,7 @@ const REVIEWS = [
   }
 ];
 
-const GALLERY_IMAGES = [
-  "1M8A9062.jpg", "1M8A9010.jpg", "1M8A9103.jpg", "1M8A9016.jpg",
-  "1M8A9019.jpg", "1M8A9037.jpg", "1M8A9040.jpg",
-  "1M8A9047.jpg", "1M8A9057.jpg", "1M8A9067.jpg", "1M8A9075.jpg",
-  "1M8A9081.jpg", "1M8A9087.jpg", "1M8A9094.jpg",
-  "1M8A9112.jpg", "1M8A9029.jpg",
-].map(f => `/media/${encodeURIComponent(f)}`);
 
-function GallerySection({ lang }: { lang: "fr" | "en" }) {
-  return (
-    <section className="w-full py-24 md:py-32 bg-stone-50 text-mediterranean">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 xl:px-16">
-        <div className="mb-20 text-center flex flex-col items-center">
-          <div className="h-px w-24 bg-gold/50 mb-8" />
-          <p className="text-gold font-bold tracking-[0.25em] text-xs uppercase mb-4">
-            {lang === "fr" ? "Notre Ambiance" : "Our Atmosphere"}
-          </p>
-          <h2 className="font-serif text-5xl md:text-6xl mb-6">
-            <ShinyText
-              text={lang === "fr" ? "L'Expérience Visuelle" : "The Visual Experience"}
-              color="#112330"
-              shineColor="#b28e57"
-              speed={3}
-            />
-          </h2>
-          <BlurText
-            text={lang === "fr"
-              ? "Plongez dans l'élégance de nos salles et la créativité de nos plats."
-              : "Immerse yourself in the elegance of our spaces and the creativity of our dishes."}
-            delay={70}
-            animateBy="words"
-            direction="bottom"
-            className="max-w-xl text-mediterranean/70 justify-center"
-          />
-        </div>
-        
-        <div className="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-6 space-y-6">
-          {GALLERY_IMAGES.map((src, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25, margin: "0px 0px -120px 0px" }}
-              transition={{ 
-                duration: 0.75, 
-                delay: (idx % 8) * 0.05, 
-                ease: "easeOut" 
-              }}
-              className="break-inside-avoid relative group overflow-hidden rounded-md shadow-sm hover:shadow-xl transition-shadow duration-500 bg-black"
-            >
-              <img 
-                src={src}
-                alt={`Gallery visual ${idx + 1}`}
-                className="w-full h-auto object-cover opacity-90 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export default function HomePage() {
   const [lang, setLang] = useState<"en" | "fr">("en");
@@ -206,8 +143,8 @@ export default function HomePage() {
       <section className="relative w-full h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden bg-mediterranean/90">
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <img 
-            src="/media/hero.jpeg" 
-            alt="Vieux Casa" 
+            src="/media/hero.jpg" 
+            alt="Villa Grecque" 
             className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-mediterranean/80 via-transparent to-mediterranean/90" />
@@ -257,21 +194,21 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="https://maps.google.com/maps/place/data=!4m2!3m1!1s0x4cc8bdf1c625d433:0x5c4254578bb1f180?entry=s&sa=X&ved=2ahUKEwj-M38TI88uUAxWNGVkFHTrz-LDgQ4kB6BAgYEAA&hl=en" target="_blank" rel="noopener noreferrer" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
+            <a href="https://maps.google.com/?q=Montreal,+QC" target="_blank" rel="noopener noreferrer" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
               <div className="w-14 h-14 flex items-center justify-center shrink-0 rounded-full bg-sand/10 group-hover:bg-gold/20 mr-2 transition-colors">
                 <MapPin size={20} className="text-sand group-hover:text-gold transition-colors" />
               </div>
               <span className="text-sand/90 group-hover:text-sand font-sans text-sm tracking-wide">
-                1075 Bd Firestone, Joliette
+                Montreal, QC
               </span>
             </a>
             
-            <a href="tel:+14507531119" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
+            <a href="tel:+14384048385" className="flex items-center h-14 bg-sand/10 hover:bg-sand/20 backdrop-blur-md border border-sand/20 rounded-full transition-all group pr-6">
               <div className="w-14 h-14 flex items-center justify-center shrink-0 rounded-full bg-sand/10 group-hover:bg-gold/20 mr-2 transition-colors">
                 <Phone size={20} className="text-sand group-hover:text-gold transition-colors" />
               </div>
               <span className="text-sand/90 group-hover:text-sand font-serif text-lg tracking-widest">
-                450-753-1119
+                438-404-8385
               </span>
             </a>
           </motion.div>
@@ -302,11 +239,10 @@ export default function HomePage() {
               {lang === "fr" ? "À La Carte" : "À La Carte"}
             </button>
             <a 
-              href="https://www.doordash.com/fr-CA/store/vieux-casa-joliette-1339263/"
-              target="_blank" rel="noopener noreferrer"
+              href="#"
               className="px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-mediterranean/60 border border-transparent hover:border-mediterranean/20 transition-colors rounded-none whitespace-nowrap"
             >
-               {lang === "fr" ? "Livraison (" : "Delivery ("}<span className="text-[#FF3008]">DoorDash</span>)
+               {lang === "fr" ? "Livraison" : "Delivery"}
             </a>
           </div>
 
@@ -430,7 +366,7 @@ export default function HomePage() {
       <section id="about" className="relative w-full py-24 md:py-32 bg-mediterranean text-sand overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img 
-            src="/media/1M8A9081.jpg"
+            src="/media/experience_bg.jpg"
             alt="Mediterranean"
             className="w-full h-full object-cover grayscale"
           />
@@ -448,8 +384,8 @@ export default function HomePage() {
             </h2>
             <BlurText
               text={lang === "fr"
-               ? "Découvrez un monde où chaque plat est un chef-d'œuvre, conçu avec les ingrédients locaux les plus frais de la Méditerranée et du Québec. Vieux Casa allie les traditions culinaires helléniques à une élégance intemporelle."
-               : "Discover a new world where every dish is a masterpiece, crafted with the freshest local ingredients and Mediterranean finesse. Vieux Casa marries Hellenic culinary traditions with timeless elegance."}
+               ? "Découvrez un monde où chaque plat est un chef-d'œuvre, conçu avec les ingrédients locaux les plus frais de la Méditerranée et du Québec. Villa Grecque allie les traditions culinaires helléniques à une élégance intemporelle."
+               : "Discover a new world where every dish is a masterpiece, crafted with the freshest local ingredients and Mediterranean finesse. Villa Grecque marries Hellenic culinary traditions with timeless elegance."}
               delay={60}
               animateBy="words"
               direction="top"
@@ -460,7 +396,7 @@ export default function HomePage() {
           <div className="w-full md:w-1/2">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                 src="/media/1M8A9040.jpg" 
+                 src="/media/experience_fg.jpg" 
                  alt="Chef Cooking" 
                  className="w-full h-full object-cover"
               />
@@ -468,9 +404,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Exquisite Atmosphere Gallery */}
-      <div id="gallery"><GallerySection lang={lang} /></div>
 
       {/* Testimonials Marquee */}
       <section id="testimonials" className="w-full py-24 md:py-32 bg-sand-dark text-mediterranean overflow-hidden">
@@ -489,7 +422,7 @@ export default function HomePage() {
 
            {/* Google Reviews CTA */}
            <a
-             href="https://maps.google.com/maps/place/data=!4m2!3m1!1s0x4cc8bdf1c625d433:0x5c4254578bb1f180?entry=s&sa=X&ved=2ahUKEwj-M38TI88uUAxWNGVkFHTrz-LDgQ4kB6BAgYEAA&hl=en"
+             href="https://maps.google.com/?q=Montreal,+QC"
              target="_blank"
              rel="noopener noreferrer"
              className="inline-flex items-center gap-5 bg-sand border border-gold/40 rounded-2xl p-5 md:p-6 hover:border-gold transition-all group shadow-md max-w-xl w-full text-left"
@@ -580,7 +513,7 @@ export default function HomePage() {
            
            <div className="w-full md:w-1/4 flex flex-col gap-6 md:pr-8">
              <div className="font-serif text-3xl tracking-[0.2em] text-sand opacity-90 uppercase">
-               VIEUX CASA
+               VILLA GRECQUE
              </div>
              <p className="text-sand/50 text-sm font-sans leading-relaxed">
                {lang === "fr" ? "L'excellence culinaire méditerranéenne en plein cœur de Joliette." : "Mediterranean culinary excellence in the heart of Joliette."}
@@ -593,7 +526,6 @@ export default function HomePage() {
                  <h6 className="font-serif text-2xl text-sand">Links</h6>
                  <div className="flex flex-col gap-4">
                    <a href="#about" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "À Propos" : "About"}</a>
-                   <a href="#gallery" className="font-sans text-sand/60 hover:text-gold transition-colors text-sm">{lang === "fr" ? "Galerie" : "Gallery"}</a>
                  </div>
               </div>
 
@@ -609,11 +541,11 @@ export default function HomePage() {
               <div className="flex flex-col gap-6">
                  <h6 className="font-serif text-2xl text-sand">Location</h6>
                  <div className="flex flex-col gap-3 text-sand/60 text-sm">
-                   <a href="https://maps.google.com/maps/place/data=!4m2!3m1!1s0x4cc8bdf1c625d433:0x5c4254578bb1f180?entry=s&sa=X&ved=2ahUKEwj-M38TI88uUAxWNGVkFHTrz-LDgQ4kB6BAgYEAA&hl=en" target="_blank" rel="noopener noreferrer" className="text-sand leading-relaxed hover:text-gold transition-colors">
-                      1075 Bd Firestone<br/>Joliette, QC J6E 6X6
+                   <a href="https://maps.google.com/?q=Montreal,+QC" target="_blank" rel="noopener noreferrer" className="text-sand leading-relaxed hover:text-gold transition-colors">
+                     Montreal, QC
                    </a>
-                   <a href="tel:+14507531119" className="font-sans text-sand/60 hover:text-gold transition-colors">
-                     +1 (450) 753-1119
+                   <a href="tel:+14384048385" className="font-sans text-sand/60 hover:text-gold transition-colors">
+                     +1 (438) 404-8385
                    </a>
                  </div>
               </div>
@@ -633,7 +565,7 @@ export default function HomePage() {
         <div className="w-full border-t border-sand/5 py-8">
            <div className="max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-6">
               <p className="text-sand/40 text-xs tracking-wider">
-                COPYRIGHT © {new Date().getFullYear()} VIEUX CASA. ALL RIGHTS RESERVED.
+                COPYRIGHT © {new Date().getFullYear()} VILLA GRECQUE. ALL RIGHTS RESERVED.
               </p>
 
               <button 
