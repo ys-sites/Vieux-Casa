@@ -195,7 +195,7 @@ export default function ReservationForm({ lang }: ReservationFormProps) {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full py-4 px-8 rounded-xl font-bold tracking-widest uppercase transition-all duration-300 shadow-xl bg-gold text-mediterranean hover:bg-gold-light hover:-translate-y-1 hover:shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 flex items-center justify-center gap-3"
+          className="w-full py-4 px-8 rounded-xl font-bold tracking-widest uppercase transition-all duration-300 shadow-xl bg-gold text-mediterranean hover:bg-gold-light hover:-translate-y-1 hover:shadow-2xl active:scale-[0.98] active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 flex items-center justify-center gap-3"
         >
           {status === 'loading' ? (
             <>

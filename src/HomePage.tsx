@@ -140,7 +140,7 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden bg-mediterranean/90">
+      <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-mediterranean/90">
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <img 
             src="/media/hero.jpeg" 
@@ -181,7 +181,7 @@ export default function HomePage() {
           >
             <button 
               onClick={() => scrollTo("menu")}
-              className="bg-transparent border border-sand text-sand px-10 py-4 rounded-full font-serif font-bold text-lg hover:bg-sand/10 transition-all duration-300 flex items-center gap-3 w-full sm:w-auto justify-center"
+              className="bg-transparent border border-sand text-sand px-10 py-4 rounded-full font-serif font-bold text-lg hover:bg-sand/10 active:scale-95 transition-all duration-300 flex items-center gap-3 w-full sm:w-auto justify-center"
             >
               {lang === "fr" ? "Voir le Menu" : "Explore Menu"}
               <ArrowRight size={18} />
@@ -235,12 +235,12 @@ export default function HomePage() {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-20">
-            <button className="px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-mediterranean border border-mediterranean bg-transparent hover:bg-mediterranean hover:text-sand transition-colors rounded-none">
+            <button className="px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-mediterranean border border-mediterranean bg-transparent hover:bg-mediterranean hover:text-sand active:scale-95 transition-all rounded-none">
               {lang === "fr" ? "À La Carte" : "À La Carte"}
             </button>
             <a 
               href="#"
-              className="px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-mediterranean/60 border border-transparent hover:border-mediterranean/20 transition-colors rounded-none whitespace-nowrap"
+              className="px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-mediterranean/60 border border-transparent hover:border-mediterranean/20 active:scale-95 transition-all rounded-none whitespace-nowrap"
             >
                {lang === "fr" ? "Livraison" : "Delivery"}
             </a>
