@@ -143,7 +143,7 @@ export default function HomePage() {
       <section className="relative w-full h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden bg-mediterranean/90">
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <img 
-            src="/media/hero.jpg" 
+            src="/media/hero.jpeg" 
             alt="Villa Grecque" 
             className="w-full h-full object-cover opacity-60"
           />
